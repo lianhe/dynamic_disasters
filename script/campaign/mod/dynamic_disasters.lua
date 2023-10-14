@@ -38,7 +38,7 @@ local mandatory_settings = {
     repeteable = false,                 -- If the disaster can be repeated.
     is_endgame = true,                  -- If the disaster is an endgame.
     revive_dead_factions = false,       -- If true, dead factions will be revived if needed.
-    proximity_war = false,              -- If true, war declarations will be against neightbours only. If false, they'll be global.
+    perimeter_war = false,              -- If true, war declarations will be against neightbours only. If false, they'll be global.
     enable_diplomacy = false,           -- If true, you will still be able to use diplomacy with disaster-related factions. Broken beyond believe, can make the game a cakewalk.
     short_victory_is_min_turn = false,  -- If the short victory turn should be used as min turn.
     long_victory_is_min_turn = false,   -- If the long victory turn should be used as min turn.
@@ -163,6 +163,11 @@ function dynamic_disasters:load_from_mct(mct)
         if not revive_dead_factions == false then
             disaster.settings.revive_dead_factions = revive_dead_factions:get_finalized_setting();
         end
+
+        local perimeter_war = mod:get_option_by_key(disaster.name .. "_perimeter_war");
+        if not perimeter_war == false then
+            disaster.settings.perimeter_war = perimeter_war:get_finalized_setting();
+        end        
 
         local enable_diplomacy = mod:get_option_by_key(disaster.name .. "_enable_diplomacy");
         if not enable_diplomacy == false then
@@ -1375,7 +1380,7 @@ function dynamic_disasters:declare_war_for_owners_and_neightbours(faction, regio
                     if ignore_region == false then
                         local master = region_owner:master();
                         if not master == false and master:is_null_interface() == false then
-                            ignore_faction = self:faction_subculture_in_list(master, subcultures_to_ignore);
+                            ignore_region = self:faction_subculture_in_list(master, subcultures_to_ignore);
                         end
                     end
 
@@ -1433,7 +1438,7 @@ function dynamic_disasters:declare_war_on_adjacent_region_owners(faction, base_r
                     if ignore_region == false then
                         local master = region_owner:master();
                         if not master == false and master:is_null_interface() == false then
-                            ignore_faction = self:faction_subculture_in_list(master, subcultures_to_ignore);
+                            ignore_region = self:faction_subculture_in_list(master, subcultures_to_ignore);
                         end
                     end
 
