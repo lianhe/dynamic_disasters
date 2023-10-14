@@ -64,6 +64,7 @@ disaster_configs = {
         enable = true,
         revive_dead_factions = false,
         perimeter_war = false,
+        enable_diplomacy = false,
         difficulty_mod = {150, 10, 500, 10},
         min_turn_value = {100, 10, 400, 10},
         max_turn_value = {0, 0, 2000, 10},

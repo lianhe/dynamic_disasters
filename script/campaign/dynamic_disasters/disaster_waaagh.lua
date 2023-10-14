@@ -68,7 +68,7 @@ disaster_waaagh = {
         repeteable = false,                 -- If the disaster can be repeated.
         is_endgame = true,                  -- If the disaster is an endgame.
         revive_dead_factions = false,       -- If true, dead factions will be revived if needed.
-        proximity_war = false,              -- If true, war declarations will be against neightbours only. If false, they'll be global.
+        perimeter_war = false,              -- If true, war declarations will be against neightbours only. If false, they'll be global.
         enable_diplomacy = false,           -- If true, you will still be able to use diplomacy with disaster-related factions. Broken beyond believe, can make the game a cakewalk.
         short_victory_is_min_turn = false,  -- If the short victory turn should be used as min turn.
         long_victory_is_min_turn = true,    -- If the long victory turn should be used as min turn.
@@ -454,7 +454,7 @@ function disaster_waaagh:trigger_da_biggest_waaagh()
 
                 cm:force_change_cai_faction_personality(faction_key, self.ai_personality)
                 cm:instantly_research_all_technologies(faction_key)
-                dynamic_disasters:declare_war_configurable(not self.settings.perimeter_war, self.settings.perimeter_war, true, faction, nil, nil, true, { self.subculture }, true);
+                dynamic_disasters:declare_war_configurable(not self.settings.perimeter_war, self.settings.perimeter_war, true, faction, nil, nil, true, self.denied_for_sc, true);
 
                 cm:apply_effect_bundle(self.invader_buffs_effects_key, faction_key, 0)
                 table.insert(self.settings.regions, region_key);

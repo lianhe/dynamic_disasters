@@ -154,7 +154,7 @@ disaster_chaos_invasion = {
         repeteable = false,                 -- If the disaster can be repeated.
         is_endgame = true,                  -- If the disaster is an endgame.
         revive_dead_factions = false,       -- If true, dead factions will be revived if needed.
-        proximity_war = false,              -- If true, war declarations will be against neightbours only. If false, they'll be global.
+        perimeter_war = false,              -- If true, war declarations will be against neightbours only. If false, they'll be global.
         enable_diplomacy = false,           -- If true, you will still be able to use diplomacy with disaster-related factions. Broken beyond believe, can make the game a cakewalk.
         short_victory_is_min_turn = false,  -- If the short victory turn should be used as min turn.
         long_victory_is_min_turn = true,    -- If the long victory turn should be used as min turn.
@@ -2024,11 +2024,17 @@ function disaster_chaos_invasion:check_start()
 
     -- Check that Archaon is non-confederated. We don't care if it's alive or dead, just if we can use him. It's needed to kickstart the disaster and to act as fallback faction.
     local faction = cm:get_faction("wh_main_chs_chaos");
+
+    --[[
     if faction == false or faction:is_null_interface() or faction:was_confederated() then
-        return false;
+        return true;
+    end
+    --]]
+    if faction == false or faction:is_null_interface() then
+        return true;
     end
 
-    -- Debug mode support.
+    -- Debug mode support.  
     if dynamic_disasters.settings.debug_2 == true then
         return true;
     end
@@ -2065,7 +2071,7 @@ function disaster_chaos_invasion:check_finish()
 
     -- Stop if we have no more attackers.
     if #self.settings.factions == 0 then
-        return false;
+        return true;
     end
 
     -- If all chaos factions are dead, end the disaster. If not, check depending on the state we're about to trigger.
@@ -2076,19 +2082,16 @@ function disaster_chaos_invasion:check_finish()
     -- If we haven't triggered the first stage, just check if Archaon is confederated. If so, we end the disaster here.
     if self.settings.status == STATUS_TRIGGERED then
         self.settings.stage_1_data.factions = dynamic_disasters:remove_confederated_factions_from_list(self.settings.stage_1_data.factions);
-
         -- If all chaos factions are dead, end the disaster. If not, check depending on the state we're about to trigger.
         if not dynamic_disasters:is_any_faction_alive_from_list(self.settings.stage_1_data.factions) then
             return true;
         end
-
-        local faction = cm:get_faction("wh_main_chs_chaos");
-        return faction == false or faction:is_null_interface() or faction:was_confederated();
+        --local faction = cm:get_faction("wh_main_chs_chaos");
+        --return faction == false or faction:is_null_interface() or faction:was_confederated();
     end
 
     -- If we're on Stage 1, check if any of the factions we use is still available to use. We don't check for dead factions here.
     if self.settings.status == STATUS_STAGE_1 then
-
         -- Update the list of available factions.
         self.settings.stage_2_data.factions = dynamic_disasters:remove_confederated_factions_from_list(self.settings.stage_2_data.factions);
         return #self.settings.stage_2_data.factions == 0 or not dynamic_disasters:is_any_faction_alive_from_list(self.settings.stage_2_data.factions)
@@ -2127,7 +2130,7 @@ function disaster_chaos_invasion:trigger_stage_1()
 
             cm:instantly_research_all_technologies(faction_key);
             dynamic_disasters:no_peace_no_confederation_only_war(faction_key, self.settings.enable_diplomacy);
-            dynamic_disasters:declare_war_configurable(not self.settings.perimeter_war, self.settings.perimeter_war, true, faction, nil, region_keys, true, { self.denied_for_sc }, true);
+            dynamic_disasters:declare_war_configurable(not self.settings.perimeter_war, self.settings.perimeter_war, true, faction, nil, region_keys, true, self.denied_for_sc , true);
             self:declare_war_on_unvasalized_norscans(faction)
         end
     end
@@ -2252,7 +2255,7 @@ function disaster_chaos_invasion:trigger_stage_2()
             end
 
             dynamic_disasters:no_peace_only_war(faction_key, self.settings.enable_diplomacy)
-            dynamic_disasters:declare_war_configurable(not self.settings.perimeter_war, self.settings.perimeter_war, true, faction, nil, war_region_keys, true, { self.denied_for_sc }, true);
+            dynamic_disasters:declare_war_configurable(not self.settings.perimeter_war, self.settings.perimeter_war, true, faction, nil, war_region_keys, true, self.denied_for_sc, true);
             self:declare_war_on_unvasalized_norscans(faction)
         end
 
