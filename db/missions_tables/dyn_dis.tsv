@@ -1,0 +1,22 @@
+key	mission_type	localised_title	localised_description	ui_image	ui_icon	generate	prioritised	event_category	set_piece_battle	location_x	location_y	quest_mission	quest_mission_final	trigger_radius	quest_character	sticky_by_default	localised_mission_completed_text	can_be_manually_cancelled
+#missions_tables;0;db/missions_tables/dyn_dis																		
+dyn_dis_realm_divided_united_we_stand_1	CAPTURE_REGIONS			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_grudge_too_far_we_ran_out_of_book_2	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_chaos_invasion_endtimes_unfolding_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_wild_hunt_and_so_the_wild_hunt_begun_1	CAPTURE_REGIONS			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_waaagh_da_biggest_and_badest_waaagh_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_vampires_rise_planet_of_the_dead_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_pyramid_of_nagash_guess_whos_back_1	CAPTURE_REGIONS			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_aztec_invasion_d_day_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_wild_hunt_and_so_the_wild_hunt_begun_2	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_pyramid_of_nagash_guess_whos_back_2	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_chaos_invasion_great_vortex_undone_1	CAPTURE_REGIONS			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_grudge_too_far_we_ran_out_of_book_1	CAPTURE_REGIONS			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_realm_divided_united_we_stand_2	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_the_vermintide_the_vermintide_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_dragon_emperors_wrath_unleashed_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_for_the_motherland_for_our_lands_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_the_greatest_crusade_the_greatest_counter_crusade_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_empire_of_steel_and_faith_steel_faith_and_guns_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_will_of_hashut_will_of_hashut_2	CAPTURE_REGIONS			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
+dyn_dis_will_of_hashut_will_of_hashut_1	SCRIPTED			emp/generic	event_province_positive.png	false	false	Objective		0	0	false	false	0.0000		false		false
