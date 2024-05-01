@@ -93,7 +93,8 @@ dragon_emperors_wrath = {
             -- Major
             "wh3_main_cth_the_northern_provinces",
             "wh3_main_cth_the_western_provinces",
-
+            "wh3_dlc24_cth_the_celestial_court" ,
+            
             -- Minor
             "wh3_main_cth_burning_wind_nomads",
             "wh3_main_cth_celestial_loyalists",
@@ -115,6 +116,7 @@ dragon_emperors_wrath = {
     factions_base_regions = {
         wh3_main_cth_the_northern_provinces = "wh3_main_combi_region_nan_gau",
         wh3_main_cth_the_western_provinces = "wh3_main_combi_region_hanyu_port",
+        wh3_dlc24_cth_the_celestial_court = "wh3_main_combi_region_isle_of_the_crimson_skull" ,
         wh3_main_cth_burning_wind_nomads = "wh3_main_combi_region_fu_hung",
         wh3_main_cth_celestial_loyalists = "wh3_main_combi_region_wei_jin",
         wh3_main_cth_eastern_river_lords = "wh3_main_combi_region_shi_wu",
@@ -165,6 +167,7 @@ dragon_emperors_wrath = {
 
     miao_yin_ai_personality = "dyn_dis_wh3_combi_cathay_realm_divided_miao_yin",
     zhao_ming_ai_personality = "dyn_dis_wh3_combi_cathay_realm_divided_zhao_ming",
+    yuan_bo_ai_personality = "dyn_dis_wh3_combi_cathay_realm_divided_yuan_bo",    
     generic_ai_personality = "dyn_dis_wh3_combi_cathay_realm_divided_generic",
 }
 
@@ -361,6 +364,8 @@ function dragon_emperors_wrath:trigger_dragon_emperors_wrath()
                     cm:force_change_cai_faction_personality(invasion_faction:name(), self.miao_yin_ai_personality)
                 elseif invasion_faction:name() == "wh3_main_cth_the_western_provinces" then
                     cm:force_change_cai_faction_personality(invasion_faction:name(), self.zhao_ming_ai_personality)
+                elseif invasion_faction:name() == "wh3_dlc24_cth_the_celestial_court" then
+                    cm:force_change_cai_faction_personality(invasion_faction:name(), self.yuan_bo_ai_personality)
                 else
                     cm:force_change_cai_faction_personality(invasion_faction:name(), self.generic_ai_personality)
                 end
